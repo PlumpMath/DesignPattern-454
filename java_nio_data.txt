@@ -1,0 +1,13 @@
+This is a FileChannel Demo!
+This is a FileChannel Demo!
+This is a FileChannel Demo!
+This is a FileChannel Demo!
+This is a FileChannel Demo!
+New String to write to file...1487680492433
+New String to write to file...1487680553788
+New String to write to file...1487680643190
+New String to write to file...1487680667956
+New String to write to file...1487681108705
+New String to write to file...1487681116110
+New String to write to file...1487681125219
+New String to write to file...1487681229897
