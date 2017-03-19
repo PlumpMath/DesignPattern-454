@@ -1,3 +1,5 @@
+package MLog;
+
 /**
  * Created by hadoop on 17-3-19.
  * 能在终端输出颜色的简易Log类
