@@ -6,7 +6,7 @@ package Stack;
 public class StackTest {
 
     public static void main(String[] args) {
-        Stack stack = new Stack(1);
+        StackI stack = new StackI(1);
         stack.push(1);
         stack.push(2);
         System.out.println(stack.size());
@@ -18,5 +18,12 @@ public class StackTest {
         System.out.println(stack.pop());
         System.out.println(stack.pop());
         System.out.println(stack.size());
+
+        Stack<String> s = new Stack<String>();
+        s.push("aaa");
+        s.push("bbb");
+        s.push("ccc");
+        System.out.println(s.pop());
+        System.out.println(s.peek());
     }
 }

@@ -1,5 +1,8 @@
 package MLog;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by hadoop on 17-3-19.
  * 能在终端输出颜色的简易Log类
@@ -71,5 +74,13 @@ public class Log {
         Success("SuccessMessage");
         System.out.println("\033[0;32;34mTestMessage");
         System.out.println("hhhhhe");
+
+
+        String currentTime = String.format("%1$tY-%1$tm-%1$td %1$tT", new Date());
+        Info(currentTime);
+
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("Y-MM-dd HH:mm:ss");
+        Info(sdf.format(date));
     }
 }

@@ -2,6 +2,7 @@ package TemplateMethod;
 
 /**
  * Created by hadoop on 17-2-13.
+ * 抽象类
  */
 public abstract class AbstractDisplay {
 

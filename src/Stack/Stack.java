@@ -3,58 +3,70 @@ package Stack;
 import java.util.Arrays;
 
 /**
- * Created by hadoop on 17-3-12.
- * 栈的数组方式简易实现
+ * Created by hadoop on 17-4-23.
+ * Stack栈
  */
-public class Stack {
-
-    private int mSize = 0;
-    private int[] array;
+@SuppressWarnings("never used")
+public class Stack<E> {
+    private int size = 0;
+    private Object[] array;
 
     public Stack() {
         this(10);
     }
 
-    public Stack(int size) {
-        if (size <= 0) {
-            size = 10;
+    public Stack(int initCapacity) {
+        if (initCapacity <= 0) {
+            throw new RuntimeException("初始化栈空间错误!");
         }
-        array = new int[size];
+        array = new Object[initCapacity];
     }
 
-    /**
-     * 入栈操作
-     * @param item
-     */
-    public void push(int item) {
-        if (mSize == array.length) {
-            array = Arrays.copyOf(array, mSize*2);
+    public E push(E item) {
+        synchronized (Stack.class) {
+            ensureCapacity(size + 1);
+            array[size++] = item;
         }
-        array[mSize++] = item;
-    }
-
-    public int peek() {
-        if (mSize == 0) {
-            throw new IndexOutOfBoundsException("栈已经空");
-        }
-        return array[mSize-1];
-    }
-
-    public int pop() {
-        int item = peek();
-        mSize--;
         return item;
     }
 
-    public boolean isFull() {
-        return mSize == array.length;
+    public E peek() {
+        if (isEmpty()) {
+            throw new IndexOutOfBoundsException("栈已经空!");
+        }
+        return (E) array[size-1];
+    }
+
+    public E pop() {
+        E item;
+        synchronized (Stack.class) {
+            item = peek();
+            size--;
+        }
+        return item;
     }
 
     public boolean isEmpty() {
-        return mSize == 0;
+        return size == 0;
     }
 
     public int size() {
-        return mSize;
+        return size;
+    }
+
+    private void ensureCapacity(int minCapacity) {
+        if (minCapacity > array.length) {
+            grow();
+        }
+    }
+
+    private void grow() {
+        int oldCapacity = array.length;
+        int newCapacity = oldCapacity*2;
+        if (newCapacity < oldCapacity) {
+            throw new OutOfMemoryError();
+        } else {
+            array = Arrays.copyOf(array, newCapacity);
+        }
     }
 }
